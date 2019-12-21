@@ -13,13 +13,32 @@ void setup(){
 void loop(){  
   int keypadData = analogRead(PORT_IN_Keypad);
 
-  if (keypadData < 100){
+  if (keypadData < 465){
     return;
   }
+
+  int button = 1;
+
+  if (keypadData < 1022) button = 2;
+  if (keypadData < 930) button = 3;
+  if (keypadData < 850) button = 4;
+  if (keypadData < 775) button = 5;
+  if (keypadData < 720) button = 6;
+  if (keypadData < 670) button = 7;
+  if (keypadData < 635) button = 8;
+  if (keypadData < 595) button = 9;
+  if (keypadData < 550) button = 10;
+  if (keypadData < 520) button = 0;
+  if (keypadData < 500) button = 11;
+  
  
   Serial.print(keypadData);
 
-  Serial.print("\t|\t");
+  Serial.print("\t");
+
+  Serial.print(button);
+
+  Serial.print("\t");
 
   int keypadState = keypad.getButtons();
 
