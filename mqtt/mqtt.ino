@@ -1,3 +1,5 @@
+#include "arduino_secrets.h"
+
 int PIN_Relais_1 = 26;
 int PIN_Relais_2 = 28;
 int PIN_Relais_3 = 30;
