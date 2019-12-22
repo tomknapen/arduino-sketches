@@ -1,3 +1,5 @@
+#include <WiFiLink.h>
+
 int PIN_Relais_1 = 26;
 int PIN_Relais_2 = 28;
 int PIN_Relais_3 = 30;
@@ -13,7 +15,8 @@ void setup() {
     ; // wait for serial port to connect. Needed for native USB port only
   }
   
-  setup_wifi();
+  WiFiClient wifiClient = setup_wifi();
+  setup_mqtt(wifiClient, mqttCallback);
   
   pinMode(PIN_Relais_1, OUTPUT);
   pinMode(PIN_Relais_2, OUTPUT);
@@ -52,3 +55,7 @@ void loop() {
 //  
 //  delay(5000);
 }  
+
+void mqttCallback(char* topic, byte* payload, unsigned int length){
+  
+}
