@@ -29,16 +29,26 @@ void setup() {
 
 void loop() {
 //  digitalWrite(PIN_Relais_1, ON);
-  delay(1000);
-  digitalWrite(PIN_Relais_2, ON);
-  delay(1000);
+//  delay(200);
+//  
+//  digitalWrite(PIN_Relais_2, ON);
+//  delay(200);
+//  
 //  digitalWrite(PIN_Relais_3, ON);
-//  delay(1000);
+//  delay(200);
+//  
 //  digitalWrite(PIN_Relais_4, ON);
-//  delay(1000);
 //  digitalWrite(PIN_Relais_1, OFF);
-  digitalWrite(PIN_Relais_2, OFF);
+//  delay(200);
+//
+//  digitalWrite(PIN_Relais_2, OFF);
+//  delay(200);
+//
 //  digitalWrite(PIN_Relais_3, OFF);
+//  delay(200);
+//
 //  digitalWrite(PIN_Relais_4, OFF);
+//  delay(200);
+//  
 //  delay(5000);
 }  
