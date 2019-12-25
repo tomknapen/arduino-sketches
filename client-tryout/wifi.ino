@@ -2,7 +2,6 @@
 
 #include "arduino_secrets.h"
 
-
 #if !defined(ESP_CH_SPI) && !defined(HAVE_HWSERIAL3)
   #include "SoftwareSerial.h"
   SoftwareSerial Serial3(15, 14); // RX, TX
@@ -10,15 +9,11 @@
 
 void(* resetFunc) (void) = 0; // declare reset function @ address 0
 
-WiFiClient setup_wifi() {
-  WiFiClient wifiClient;
-  
+void setup_wifi() {
   _initializeWifi();
   _resetEsp();
   _checkWifiModuleConnectionEstablished();
   _connectToWifi();
-
-  return wifiClient;
 }
 
 void _initializeWifi(){
@@ -32,25 +27,25 @@ void _resetEsp(){
   if (WiFi.checkFirmwareVersion("1.1.0")) {
     Serial.println("resetting ESP");
     WiFi.resetESP(); // to clear 'sockets' after sketch upload
-    delay(3000); // wait while WiFiLink firmware connects to WiFi
+    delay(5000); // wait while WiFiLink firmware connects to WiFi
   }
 }
 
 void _checkWifiModuleConnectionEstablished(){
    if (WiFi.status() == WL_NO_WIFI_MODULE_COMM) {
     delay(2000);
-    Serial.println("Communication with WiFi module not established. Resetting...");
+    Serial.println("communication with WiFi module not established. Resetting...");
     resetFunc(); 
   }
 }
 
 void _connectToWifi(){
   do {
-    Serial.println("Attempting to connect to wifi");
+    Serial.println("attempting to connect to wifi");
 
     delay(1000); // wait for connection
   }
   while ( WiFi.status() != WL_CONNECTED);
 
-  Serial.println("Connected to wifi");
+  Serial.println("connected to wifi");
 }

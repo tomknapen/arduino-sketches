@@ -1,4 +1,5 @@
 #include <WiFiLink.h>
+#include <PubSubClient.h>   
 
 int PIN_Relais_1 = 26;
 int PIN_Relais_2 = 28;
@@ -8,6 +9,9 @@ int PIN_Relais_4 = 32;
 #define ON LOW
 #define OFF HIGH
 
+WiFiClient wifiClient;
+PubSubClient mqttClient(wifiClient);
+
 void setup() { 
   //Initialize serial and wait for port to open:
   Serial.begin(115200);
@@ -15,8 +19,8 @@ void setup() {
     ; // wait for serial port to connect. Needed for native USB port only
   }
   
-  WiFiClient wifiClient = setup_wifi();
-  setup_mqtt(wifiClient, mqttCallback);
+  setup_wifi();
+  setup_mqtt(mqttCallback);
   
   pinMode(PIN_Relais_1, OUTPUT);
   pinMode(PIN_Relais_2, OUTPUT);
@@ -31,6 +35,7 @@ void setup() {
 }
 
 void loop() {
+  reconnect_mqtt();
 //  digitalWrite(PIN_Relais_1, ON);
 //  delay(200);
 //  
@@ -57,5 +62,5 @@ void loop() {
 }  
 
 void mqttCallback(char* topic, byte* payload, unsigned int length){
-  
+    Serial.println("callback!");
 }
