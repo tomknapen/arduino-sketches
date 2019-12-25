@@ -9,7 +9,7 @@
 
 void(* resetFunc) (void) = 0; // declare reset function @ address 0
 
-void setup_wifi() {
+void setupWifi() {
   _initializeWifi();
   _resetEsp();
   _checkWifiModuleConnectionEstablished();

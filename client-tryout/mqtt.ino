@@ -6,14 +6,14 @@
 IPAddress _MQTT_BROKER(192, 168, 1, 201);
 int _MQTT_PORT = 1883;
 
-void setup_mqtt(void (*callback)(char*, byte*, unsigned int)){
+void setupMqtt(void (*callback)(char*, byte*, unsigned int)){
   mqttClient.setServer(_MQTT_BROKER, _MQTT_PORT);
   mqttClient.setCallback(callback);
 
   Serial.println("initialized MQTT client");
 }
 
-void reconnect_mqtt(){
+void ensureMqttConnectionActive(){
   while (!mqttClient.connected()){
     Serial.println("connecting to MQTT");
 
