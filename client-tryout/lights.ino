@@ -1,5 +1,8 @@
 #define NUMBER_OF_LIGHTS 4
 
+#define ON "ON"
+#define OFF "OFF"
+
 static byte _lights[NUMBER_OF_LIGHTS] = {26, 28, 30, 32};
 
 void setupLights(){
@@ -23,9 +26,9 @@ void _turnOff(int lightIndex){
 }
 
 void processLight(int lightIndex, char* state){
-  if(strcmp("OFF", state) == 0){
+  if(strcmp(OFF, state) == 0){
     _turnOff(lightIndex);
-  }  if(strcmp("ON", state) == 0){
+  }  if(strcmp(ON, state) == 0){
     _turnOn(lightIndex);
   }
 }
